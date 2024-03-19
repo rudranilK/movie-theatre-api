@@ -20,11 +20,17 @@ const rowSchema = new mongoose.Schema({
    }
 });
 
-rowSchema.pre('updateOne', function () {
-   if (this.filled_seats.length > this.seats) {
-      throw new Error('Seats for this row are full!');
-   }
-});
+//WIP - validate capacity is full or not
+// rowSchema.pre('findOneAndUpdate', function (next) {
+//    const update = this.getUpdate();
+//    const filledSeats = update.$set ? update.$set.filled_seats : undefined;
+
+
+//    if (filledSeats && filledSeats.length > this.seats.length) {
+//       throw new Error('Seats for this row are full!');
+//    }
+//    next();
+// });
 
 const Row = mongoose.model('row', rowSchema);
 
