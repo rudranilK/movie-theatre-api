@@ -1,10 +1,11 @@
 const { mongoose } = require("mongoose");
 const errorHandler = require('../middlewares/error');
-const successHandler = require('../middlewares/success');
+// const successHandler = require('../middlewares/success');
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const rowController = require('../route/row');
+const seatController = require('../route/seat');
 
 module.exports = function (app) {
 
@@ -21,7 +22,7 @@ module.exports = function (app) {
    app.use(helmet());
 
    app.use('/api/rows', rowController);
-   // app.use('/api/seats', seatController);
+   app.use('/api/seats', seatController);
 
 
    // app.use(successHandler); WIP
