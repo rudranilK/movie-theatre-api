@@ -20,7 +20,7 @@ const rowSchema = new mongoose.Schema({
    }
 });
 
-//WIP - validate capacity is full or not
+//! WIP - validate capacity is full or not
 // rowSchema.pre('findOneAndUpdate', function (next) {
 //    const update = this.getUpdate();
 //    const filledSeats = update.$set ? update.$set.filled_seats : undefined;
