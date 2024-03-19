@@ -34,3 +34,15 @@ module.exports.getAll = async (req, res) => {
       data: { rows }
    });
 }
+
+module.exports.getRow = async (req, res) => {
+   const { id: row_no } = req.params;
+
+   const row = await Row.findOne({ row_no }, { __v: 0 }).populate('seats', { row_no: 0, __v: 0 });
+
+   if (!row) return res.status(404).json({ data: null, message: `Not Found` })
+
+   return res.status(200).json({
+      data: { row }
+   });
+}
